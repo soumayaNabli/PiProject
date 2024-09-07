@@ -17,30 +17,30 @@ import java.util.Map;
 public class ReponseController {
     private ReponseService serviceReponse;
 
-    @PostMapping("/ajouterRep")
+    @PostMapping("/")
     public Reponse create(@RequestBody Reponse reponse){
         return serviceReponse.ajouter(reponse);
     }
 
-    @GetMapping("/afficherRep")
+    @GetMapping("/")
     public List<Reponse> read(){return serviceReponse.lire();}
 
-    @GetMapping("/afficherRep/{id}")
+    @GetMapping("/{id}")
     public Reponse findUserById (@PathVariable int id){
         return serviceReponse.afficherParId(id);
     }
 
-    @PutMapping("/modifierRep/{id}")
+    @PutMapping("/{id}")
     public Reponse update(@PathVariable int id,@RequestBody Reponse reponse){
         return serviceReponse.modifier(id,reponse);
     }
 
-    @DeleteMapping("/supprimerRep/{id}")
+    @DeleteMapping("/{id}")
     public String delete(@PathVariable int id){
         return serviceReponse.supprimer(id);
     }
 
-    @GetMapping("/triParDate")
+    @GetMapping("/parDate")
     public List<Reponse> trierParDate() {
         return serviceReponse.getReponsesSortedByDate();
     }
