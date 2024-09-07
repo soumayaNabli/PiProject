@@ -30,17 +30,17 @@ public class ReclamationController {
     private ReclamationService serviceRec;
 
 
-    @PostMapping("/ajouterRec")
+    @PostMapping("/")
     public Reclamation addReclamation(@RequestBody Reclamation reclamation){
         return serviceRec.ajouterRec(reclamation);
     }
 
-    @GetMapping("/afficherRec")
+    @GetMapping("/")
     public List<Reclamation> findAllReclamations(){
         return serviceRec.afficherRec();
     }
 
-    @GetMapping("/afficherRec/{id}")
+    @GetMapping("/{id}")
     public Reclamation findReclamationById(@PathVariable int id){
         return serviceRec.afficherRecParId(id);
     }
@@ -50,18 +50,18 @@ public class ReclamationController {
         return serviceRec.aff(priorite);
     }*/
 
-    @PutMapping("/modifierRec/{id}")
+    @PutMapping("/{id}")
     public Reclamation updateReclamation(@PathVariable int id,@RequestBody Reclamation reclamation){
                     return serviceRec.modifierRec(id,reclamation);
 
     }
 
-    @DeleteMapping("/supprimerRec/{id}")
+    @DeleteMapping("/{id}")
     public String deleteReclamation(@PathVariable int id){
         return serviceRec.supprimerRec(id);
     }
 
-    @GetMapping("/trierParPriorite")
+    @GetMapping("/parPriorite")
     public List<Reclamation> trierRecParPriorite() {
         return serviceRec.trierRecParPriorite();
     }
@@ -73,12 +73,12 @@ public class ReclamationController {
         return serviceRec.tempsMoyenResolution();
     }
 
-    @GetMapping("/recParMois")
+    @GetMapping("/parMois")
     public Map<MoisEtAnnee, Integer> afficherRecParMois() {
         return serviceRec.afficherRecParMois();
     }
 
-    @GetMapping("/recParStatut")
+    @GetMapping("/parStatut")
     public List<Map<String, Object>> statParStatut() {
         return serviceRec.statParStatut();
     }
