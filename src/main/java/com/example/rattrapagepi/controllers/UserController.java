@@ -48,25 +48,25 @@ public class UserController {
         serviceUser.registerUser(user);  // Utilisation de serviceUser
         return ResponseEntity.ok(user);
     }
-    @GetMapping("/afficherUser")
+    @GetMapping("/")
     public List<User> read(){return serviceUser.lire();}
 
-    @GetMapping("/afficherUser/{id}")
+    @GetMapping("/{id}")
     public User findUserById (@PathVariable int id){
         return serviceUser.afficherParId(id);
     }
 
-    @GetMapping("/afficherUserParRole/{role}")
+    @GetMapping("/parRole/{role}")
     public List<User> findUserByRole (@PathVariable Role role){
         return serviceUser.afficherParRole(role);
     }
 
-    @PutMapping("/modifierUser/{id}")
+    @PutMapping("/{id}")
     public User update(@PathVariable int id,@RequestBody User user){
         return serviceUser.modifier(id,user);
     }
 
-    @DeleteMapping("/supprimerUser/{id}")
+    @DeleteMapping("/{id}")
     public String delete(@PathVariable int id){
         return serviceUser.supprimer(id);
     }
