@@ -18,35 +18,35 @@ import java.util.List;
 public class RDVController {
     private RDVService serviceRDV;
 
-    @PostMapping("/ajouterRDV")
+    @PostMapping("/")
     public RDV create(@RequestBody RDV rdv){
         return serviceRDV.ajouter(rdv);
     }
 
-    @GetMapping("/afficherRDV")
+    @GetMapping("/")
     public List<RDV> read(){return serviceRDV.lire();}
 
-    @GetMapping("/afficherRDV/{id}")
+    @GetMapping("/{id}")
     public RDV findUserById (@PathVariable int id){
         return serviceRDV.afficherParId(id);
     }
 
-    @GetMapping("/afficherRDVParStatut/{statut}")
+    @GetMapping("/parStatut/{statut}")
     public List<RDV> findUserByStatut (@PathVariable StatutRDV statut){
         return serviceRDV.afficherParStatut(statut);
     }
 
-    @PutMapping("/modifierRDV/{id}")
+    @PutMapping("/{id}")
     public RDV update(@PathVariable int id, @RequestBody RDV rdv){
         return serviceRDV.modifier(id,rdv);
     }
 
-    @DeleteMapping("/supprimerRDV/{id}")
+    @DeleteMapping("/{id}")
     public String delete(@PathVariable int id){
         return serviceRDV.supprimer(id);
     }
 
-    @GetMapping("/triParDate")
+    @GetMapping("/parDate")
     public List<RDV> getFutureRdvsSortedByDate() {
         return serviceRDV.trierParDate();
     }
